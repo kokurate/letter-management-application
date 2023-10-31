@@ -132,6 +132,26 @@ class Users extends Component
     }
 
 
+    public function deleteUser($id){
+        $user = User::find($id);
+        $this->dispatchBrowserEvent('deleteUser',[
+            'title' => 'Apakah Kamu Yakin?',
+            'html' => 'Kamu akan menghapus user <b>'.$user->name.'</b>',
+            'id' => $id
+        ]);
+    }
+
+
+    public function deleteUserAction($id){
+        $user = User::where('id', $id)->first();
+
+        $user->delete();
+        $this->dispatchBrowserEvent('info',['message' => 'User telah berhasil dihapus.']);
+
+        
+    }
+
+
     public function render()
     {
         return view('livewire.users',[
