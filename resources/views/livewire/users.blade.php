@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\User::where('id', '!=', auth()->id())->get() as $data)
+                            @foreach($users as $data)
                             <tr>
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->email }}</td>
@@ -34,8 +34,8 @@
                                 <td>{{ $data->userType->name }}</td>
                                 <td>
                                     <div class="btn-group d-block text-center">
-                                        <a href="#" class="btn btn-sm btn-primary my-1" wire:click.prevent=''>Edit</a>&nbsp;
-                                        <a href="#" class="btn btn-sm btn-danger my-1" wire:click.prevent=''>Hapus</a>
+                                        <a href="#" class="btn btn-sm btn-primary my-1" wire:click.prevent='editUser({{ $data->id }})'>Edit</a>&nbsp;
+                                        <a href="#" class="btn btn-sm btn-danger my-1" wire:click.prevent='deleteUser({{ $data->id }})'>Hapus</a>
                                     </div>
                                 </td>
                             </tr>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="modal-body">
                     @if($updateUserMode)
-                        <input type="hidden" wire:model="selected_name_id">
+                        <input type="hidden" wire:model="selected_user_id">
                     @endif
                     <div class="mb-3">
                         <div class="form-label">Tipe User</div>
@@ -116,6 +116,11 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    @if($updateUserMode == true)
+                        <br>
+                        <hr>
+                        <p style="font-size: 15px;color:red;">* Optional</p>
+                    @endif
                     <div class="mb-3">
                         <label class="form-label">Password</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" 
@@ -124,6 +129,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                 
                 </div>
     
                 <div class="modal-footer">
