@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->name('auth.')->group(function(){
     Route::view('/','auth.login')->name('login');
-    // Route::post('/login/attempt', AuthController::class,'')
+    Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 });
 
 #### User Pegawai

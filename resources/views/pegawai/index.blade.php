@@ -28,7 +28,19 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#upload">Upload</a></li>
                         <li class="nav-item"><a class="nav-link" href="#history">History</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                        <li class="nav-item">
+                            <a href="{{ route('auth.logout') }}" 
+                                class="nav-link" 
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+
+                                Keluar
+                            </a>
+                            <form action="{{ route('auth.logout') }}"
+                                id="logout-form" method="post">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

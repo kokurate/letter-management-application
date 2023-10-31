@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="/templates/back/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    @livewireStyles
 
 </head>
 
@@ -40,23 +41,15 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Halaman Login</h1>
+                                        <img class="mb-3" src="{{ asset('logo.png') }}" alt="LOGO" style="width:25%">
+                                        <h1 class="h3 text-gray-900 mb-4">Halaman Login</h1>
+                                        <h4 class="text-gray-900 mb-4">
+                                            Dinas Perumahan Rakyat dan Kawan Pemukiman Kabupaten Minahasa
+                                        </h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <hr>
-                                    </form>
+                                    
+                                    @livewire('login-form')
+
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
@@ -81,6 +74,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/templates/back/js/sb-admin-2.min.js"></script>
+    @livewireScripts
 
 </body>
 
