@@ -34,12 +34,15 @@ Route::middleware('auth','level:3')->group(function () {
 
 #### User Admin and Kadis
 Route::middleware('auth','level:1,2')->group(function () {
-    Route::prefix('/user')->name('user.')->group(function(){
+    Route::prefix('/user')->name('user.')->group(function()
+    {
         Route::view('/dashboard','user.index')->name('index');
     });
     
     ### Only User Admin
-    Route::middleware('auth','level:1')->group(function () {     
+    Route::middleware('auth','level:1')->group(function () 
+    {     
+        Route::view('/users','user.users')->name('users');
         Route::get('/testing', function () {
             echo "testing";
         });

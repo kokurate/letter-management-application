@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">DPRKP</div>
     </a>
 
     <!-- Divider -->
@@ -64,13 +64,23 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Admin
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+   
+
+    <!-- Nav Item - Charts -->
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('users') }}">
+            <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+            <span>Users</span></a>
+    </li>
+
+     <!-- Nav Item - Pages Collapse Menu -->
+     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
@@ -88,13 +98,6 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
     </li>
 
     <!-- Nav Item - Tables -->

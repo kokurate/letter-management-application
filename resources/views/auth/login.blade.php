@@ -42,9 +42,9 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <img class="mb-3" src="{{ asset('logo.png') }}" alt="LOGO" style="width:25%">
-                                        <h1 class="h3 text-gray-900 mb-4">Halaman Login</h1>
+                                        <h1 class="h3 text-gray-900 mb-4">HALAMAN LOGIN</h1>
                                         <h4 class="text-gray-900 mb-4">
-                                            Dinas Perumahan Rakyat dan Kawan Pemukiman Kabupaten Minahasa
+                                            Dinas Perumahan Rakyat dan Kawasan Permukiman Kabupaten Minahasa
                                         </h4>
                                     </div>
                                     

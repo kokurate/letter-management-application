@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>@yield('pageTitle')</title>
 
     <!-- Custom fonts for this template-->
     <link href="/templates/back/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,9 @@
    <!-- Data Table-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
-    @stack('css')
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 </head>
 
@@ -71,8 +73,9 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
- 
-
+    <!-- Bootstrap 5 CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="/templates/back/vendor/jquery/jquery.min.js"></script>
     <script src="/templates/back/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

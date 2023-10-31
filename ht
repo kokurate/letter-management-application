@@ -8,3 +8,5 @@ composer require livewire/livewire
 php artisan make:livewire LoginForm
 
 php artisan make:middleware CheckLevel
+
+php artisan make:livewire Users
