@@ -6,3 +6,5 @@ php artisan make:model Status -ms
 composer require livewire/livewire
 
 php artisan make:livewire LoginForm
+
+php artisan make:middleware CheckLevel
