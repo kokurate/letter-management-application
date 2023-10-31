@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'type',
     ];
 
     /**
@@ -41,4 +43,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    # 1 user belongsto type_id in column type from users table
+    public function userType()
+    {
+        return $this->belongsTo(Type::class,'type_id','id');
+    }
+
+    public function surat(){
+        return $this->hasMany(Surat::class,'user_id','id');
+    }
+
 }
