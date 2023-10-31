@@ -23,11 +23,18 @@ Route::prefix('/')->name('auth.')->group(function(){
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 });
 
-#### User Pegawai
-Route::view('/pegawai','pegawai.index')->name('pegawai');
+
+Route::middleware('auth')->group(function () {
+    #### User Pegawai
+    Route::prefix('/')->name('pegawai.')->group(function(){
+        Route::view('/pegawai','pegawai.index')->name('index');
+    });
+});
 
 
-#### User Admin and Kadis
-Route::prefix('/user')->name('user.')->group(function(){
-    Route::view('/dashboard','user.index')->name('index');
+Route::middleware('auth')->group(function () {
+    #### User Admin and Kadis
+    Route::prefix('/user')->name('user.')->group(function(){
+        Route::view('/dashboard','user.index')->name('index');
+    });
 });

@@ -44,11 +44,11 @@ class LoginForm extends Component
             // cek level
                 if($user->type_id == '1' || $user->type_id == '2'){
                     Request()->session()->regenerate();
-                    return redirect()->intended('user/dashboard');
+                    return redirect()->route('user.index');
                 }
                 elseif($user->type_id == '3'){
                     Request()->session()->regenerate();
-                    return redirect()->intended('pegawai');
+                    return redirect()->route('pegawai.index');
                 }
 
             
