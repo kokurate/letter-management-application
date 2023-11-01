@@ -57,7 +57,6 @@ class Users extends Component
         $saved = $user->save();
 
         if($saved){
-            session()->flash('success','User baru telah berhasil ditambahkan.');
             $this->dispatchBrowserEvent('success',['message' => 'User baru telah berhasil ditambahkan.']);
             $this->dispatchBrowserEvent('hideUserModal');
             $this->name = null;
