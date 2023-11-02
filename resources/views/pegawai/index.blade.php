@@ -17,12 +17,18 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/templates/pegawai/css/styles.css" rel="stylesheet" />
+        
+        <!-- Toastr Cdn-->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+        @livewireStyles
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">DPRKP</a>
+                <a class="navbar-brand" href="{{ route('pegawai.index') }}">DPRKP</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
@@ -75,63 +81,10 @@
                         {{-- <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p> --}}
                     </div>
                 </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-12">
-                        <form action="insertpegawai" method="POST" enctype="multipart/form-data" id="contactForm" >
-                            @csrf   
-                            <div class="mb-3">
-                                <label for="tipe_surat" class="form-label">Tipe Surat</label>
-                                <select name="tipe_surat" id="tipe_surat" class="form-select" >
-                                    <option value="">Pilih Tipe Surat</option>
-                                    <option value="Surat Masuk">Surat Masuk</option>
-                                    <option value="Surat Keluar">Surat Keluar</option>
-                                </select>
-                            </div>
-                    </div>
-                    <div class="col-lg-6">
-                                <div class="mb-3">
-                                    <label for="no_surat" class="form-label">No Surat</label>
-                                    <input type="text" class="form-control" id="no_surat" name="no_surat">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="perihal_pegawai" class="form-label">Perihal</label>
-                                    <input type="text" class="form-control" id="perihal_pegawai" name="perihal_pegawai">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="tanggal" class="form-label">Tanggal Pelaksanaan</label>
-                                    <input type="date" id="tanggal" 
-                                            class="form-control" name="tanggal" value="" required>
-                                    
-                                </div>
-                                
-                            
-                    </div>
-                    <div class="col-lg-6">
-
-                            <div class="mb-3">
-                                <label for="alamat_pengirim" class="form-label">Alamat Pengirim</label>
-                                <input type="text" class="form-control" id="alamat_pengirim" name="alamat_pengirim">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="alamat_tujuan" class="form-label">Alamat Tujuan</label>
-                                <input type="text" class="form-control" id="alamat_tujuan" name="alamat_tujuan">
-                            </div>
-
-                            
-                            <div class="mb-3">
-                                <label for="file" class="form-label">File Surat</label>
-                                <input class="form-control" type="file" id="file">    
-                            </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="d-grid"><button class="btn btn-primary btn-xl mt-5" id="submitButton" type="submit">Submit</button></div>
-
-                        </form>
-                    </div>
-                </div>
+              
+                <!-- ROW IN FORM-->
+                @livewire('pegawai-upload-form')
+                
             </div>
 
             <!-- Table Daftar Surat
@@ -149,8 +102,37 @@
 
         </section>
 
-   
 
+         <!-- Jquery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+    <!-- Toastr  cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Toastr script for livewire-->
+    <script>
+      $(document).ready(function(){
+          toastr.options= {
+            'progressBar' : true,
+            'positionClass' : 'toast-bottom-right'
+          }
+      });
+      window.addEventListener('info', event =>{
+        toastr.info(event.detail.message);
+      });
+      window.addEventListener('success', event =>{
+        toastr.success(event.detail.message);
+      });
+      window.addEventListener('warning', event =>{
+        toastr.warning(event.detail.message);
+      });
+      window.addEventListener('error', event =>{
+        toastr.error(event.detail.message);
+      });
+    </script>
+   
+        @livewireScripts
         <!-- Footer-->
         {{-- <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
@@ -166,5 +148,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+   
     </body>
 </html>
