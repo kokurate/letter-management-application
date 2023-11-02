@@ -30,4 +30,13 @@ class Surat extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
+
+    public function getFileAttribute($value)
+    {
+        if($value){
+            return asset('storage/surat/'.$value);
+        }
+
+    }
+
 }
