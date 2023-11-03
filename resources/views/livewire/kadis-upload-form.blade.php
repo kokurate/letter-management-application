@@ -38,7 +38,7 @@
                                     <a href="#" class="my-1 btn btn-danger btn-sm delete">
                                             <i class="fas fa-trash"></i>
                                     </a>
-                                    <a href="#" class="my-1 btn btn-primary btn-sm delete">
+                                    <a href="{{ route('user.upload-surat-detail', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
                                             <i class="fas fa-pencil-alt"></i>
                                     </a>
                                 </td>

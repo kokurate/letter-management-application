@@ -130,6 +130,93 @@ class UserController extends Controller
          }
 
     }
+
+    public function kadis_upload_surat_detail(Surat $surat)
+    {
+        return view('user.upload-surat-detail',[
+            'detail' => $surat->with('user')->first(),
+        ]);
+    }
+
+    public function kadis_upload_surat_store($detail, Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'perihal' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'file' => 'file|max:2024|mimes:pdf',
+        ],[
+            'perihal.required' => ':attribute tidak boleh kosong',
+            'tanggal.required' => ':attribute tidak boleh kosong',
+            'file.file' => ':attribute tidak valid',
+            'file.mimes' => ':attribute tidak valid',
+            'file.max' => ':attribute maksimal 2mb',
+        ]);
+
+        if ($validator->fails()) {
+            // return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+            return back()->withErrors($validator)->withInput();
+            
+        }
+
+
+
+        // Cek File Lama Kalo Ada Hapus
+        if($request->hasFile('file'))
+        {
+            $surat = Surat::findOrFail($detail);
+            $path = 'storage/surat/';
+            $surat_file = $surat->getAttributes()['file'];
+            $file_full_path = public_path($path . $surat_file);
+            
+            
+            if ($surat_file != null && File::exists($file_full_path)) {
+                File::delete($file_full_path);
+            }
+            
+            $path = "surat/";
+            $file = $request->file;
+            $filename = $file->getClientOriginalName();
+            $new_filename = $surat->user->username.'_'.time().'_'.$filename;
+            
+            $file->storeAs($path, $new_filename, 'public');
+            
+            $surat->file = $new_filename;
+
+
+              // Update file baru yang so ttd
+            $surat = Surat::findOrFail($detail);
+            $surat->file = $new_filename;
+            $surat->status_id = 3;
+            $surat->perihal = $request->perihal;
+            $surat->tanggal = $request->tanggal;
+            $saved = $surat->save();
+
+            if($saved){
+                return redirect()->route('user.upload-surat')->withToastSuccess('Surat Berhasil Diedit');
+            }else{
+                return back()->with('toast_error', 'Error');
+            }
+        }
+        else
+        {
+            // Update file baru yang so ttd
+            $surat = Surat::findOrFail($detail);
+            $surat->status_id = 3;
+            $surat->perihal = $request->perihal;
+            $surat->tanggal = $request->tanggal;
+            $saved = $surat->save();
+     
+            if($saved){
+                return redirect()->route('user.upload-surat')->withToastSuccess('Surat Berhasil Diedit');
+            }else{
+                return back()->with('toast_error', 'Error');
+            }
+        }
+      
+     
+
+    }
   
 
 }

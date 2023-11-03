@@ -52,6 +52,8 @@ Route::middleware('auth','level:1,2')->group(function ()
 
         #### UPLOAD SURAT
         Route::view('/upload-surat','user.upload-surat')->name('upload-surat');
+        Route::get('/upload-surat/{surat:id}',[UserController::class,('kadis_upload_surat_detail')])->name('upload-surat-detail');
+        Route::post('/upload-surat/{detail}/store',[UserController::class,('kadis_upload_surat_store')])->name('upload-surat-store');
     });
     
     ### Only User Admin
