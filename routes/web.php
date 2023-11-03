@@ -18,33 +18,42 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::prefix('/')->name('auth.')->group(function(){
+Route::prefix('/')->name('auth.')->group(function()
+{
     Route::view('/','auth.login')->name('login');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 });
 
 
 #### User Pegawai
-Route::middleware('auth','level:3')->group(function () {
-    Route::prefix('/')->name('pegawai.')->group(function(){
+Route::middleware('auth','level:3')->group(function () 
+{
+    Route::prefix('/')->name('pegawai.')->group(function()
+    {
         Route::view('/pegawai','pegawai.index')->name('index');
     });
 });
 
 
 #### User Admin and Kadis
-Route::middleware('auth','level:1,2')->group(function () {
+Route::middleware('auth','level:1,2')->group(function () 
+{
     Route::prefix('/user')->name('user.')->group(function()
     {
         Route::view('/dashboard','user.index')->name('index');
+        Route::view('/surat-masuk','user.surat-masuk')->name('surat-masuk');
+        Route::view('/upload-surat','user.upload-surat')->name('upload-surat');
     });
     
     ### Only User Admin
     Route::middleware('auth','level:1')->group(function () 
     {     
-        Route::view('/users','user.users')->name('users');
-        Route::get('/testing', function () {
-            echo "testing";
+        Route::prefix('/admin')->name('admin.')->group(function()
+        {
+            Route::view('/users','user.admin.users')->name('users');
+            Route::get('/testing', function () {
+                echo "testing";
+            });
         });
         
     });
