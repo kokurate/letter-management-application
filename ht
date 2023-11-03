@@ -13,3 +13,6 @@ php artisan make:livewire Users
 
 php artisan make:livewire PegawaiUploadForm
 php artisan storage:link
+
+composer require realrashid/sweet-alert
+php artisan sweetalert:publish
