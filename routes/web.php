@@ -47,6 +47,7 @@ Route::middleware('auth','level:1,2')->group(function ()
         Route::get('/surat-masuk',[UserController::class,('kadis_surat_masuk')])->name('surat-masuk');
         Route::get('/surat-masuk/{detail}',[UserController::class,('kadis_surat_masuk_detail')])->name('surat-masuk.detail');
         Route::post('/surat-masuk/{detail}/store',[UserController::class,('kadis_surat_masuk_store')])->name('surat-masuk.store');
+        Route::delete('/surat-masuk/{detail}/delete',[UserController::class,('kadis_surat_masuk_delete')])->name('surat-masuk.delete');
 
 
         #### UPLOAD SURAT
