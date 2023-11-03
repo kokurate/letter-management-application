@@ -25,28 +25,26 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Alamat Pengirim</th>
-                                <th>Alamat Tujuan</th>
                                 <th>Perihal</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>Verel Lantang</td>
-                                <td>Fakultas Teknik</td>
-                                <td>Rektor Universitas</td>
-                                <td>Kenaikan Pangkat Dosen</td>
-                                <td class="text-center">  
-                                    <a href="#" class="btn btn-danger btn-sm delete" data-id="8">
-                                            <i class="fas fa-trash"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-secondary btn-sm delete" data-id="1">
-                                            <i class="fas fa-eye"></i>
-                                    </a>
-                                </td>
-                            </tr>                   
+                            @foreach(App\Models\Surat::where('status_id', 1)->orderBy('created_at', 'asc')->get() as $data)
+                                <tr>
+                                    <td>{{ $data->user->name }}</td>
+                                    <td>{{ $data->perihal }}</td>
+                                    <td class="text-center">  
+                                        <a href="" class="btn btn-danger btn-sm delete" data-id="8">
+                                                <i class="fas fa-trash"></i>
+                                        </a>
+                                        <a href="{{ route('user.surat-masuk.detail', ['detail' => $data->id]) }}?token={{ session('surat_token') }}" 
+                                                class="btn btn-secondary btn-sm delete" data-id="1">
+                                                <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>    
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

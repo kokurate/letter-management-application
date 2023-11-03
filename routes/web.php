@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,14 @@ Route::middleware('auth','level:1,2')->group(function ()
     Route::prefix('/user')->name('user.')->group(function()
     {
         Route::view('/dashboard','user.index')->name('index');
-        Route::view('/surat-masuk','user.surat-masuk')->name('surat-masuk');
+
+        #### SURAT MASUK
+        Route::get('/surat-masuk',[UserController::class,('kadis_surat_masuk')])->name('surat-masuk');
+        Route::get('/surat-masuk/{detail}',[UserController::class,('kadis_surat_masuk_detail')])->name('surat-masuk.detail');
+        Route::post('/surat-masuk/{detail}/store',[UserController::class,('kadis_surat_masuk_store')])->name('surat-masuk.store');
+
+
+        #### UPLOAD SURAT
         Route::view('/upload-surat','user.upload-surat')->name('upload-surat');
     });
     
