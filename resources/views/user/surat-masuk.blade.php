@@ -35,15 +35,21 @@
                                     <td>{{ $data->user->name }}</td>
                                     <td>{{ $data->perihal }}</td>
                                     <td class="text-center">  
-                                        <a href="" class="btn btn-danger btn-sm delete" data-id="8">
+                                        <a href="{{ route('user.surat-masuk.delete', $data->id) }}" 
+                                            class="btn btn-danger btn-sm delete" data-id="8"
+                                            data-confirm-delete="true"
+                                            onclick="event.preventDefault();document.getElementById('delete-form').submit();">
                                                 <i class="fas fa-trash"></i>
                                         </a>
+                                        
                                         <a href="{{ route('user.surat-masuk.detail', ['detail' => $data->id]) }}?token={{ session('surat_token') }}" 
                                                 class="btn btn-secondary btn-sm delete" data-id="1">
                                                 <i class="fas fa-eye"></i>
                                         </a>
+                                        
                                     </td>
-                                </tr>    
+                                </tr>  
+                                <form action="{{ route('user.surat-masuk.delete', $data->id) }}" id="delete-form" method="post">@csrf @method('delete')</form>  
                             @endforeach
                         </tbody>
                     </table>
