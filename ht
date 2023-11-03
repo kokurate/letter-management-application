@@ -16,3 +16,5 @@ php artisan storage:link
 
 composer require realrashid/sweet-alert
 php artisan sweetalert:publish
+
+php artisan make:livewire KadisUploadForm
