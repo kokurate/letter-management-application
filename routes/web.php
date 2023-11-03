@@ -62,6 +62,11 @@ Route::middleware('auth','level:1,2')->group(function ()
     {     
         Route::prefix('/admin')->name('admin.')->group(function()
         {
+
+            ## SURAT MASUK
+            Route::view('/surat-masuk','user.admin.surat-masuk')->name('surat-masuk');
+            Route::view('/surat-keluar','user.admin.surat-keluar')->name('surat-keluar');
+            
             Route::view('/users','user.admin.users')->name('users');
             Route::get('/testing', function () {
                 echo "testing";

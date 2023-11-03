@@ -44,6 +44,36 @@
     @endif
     <!-- ================================================================== -->
         
+    <!-- ======================= ADMIN ============================= -->
+    @if(auth()->user()->type_id == 1)
+
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Menu
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.surat-masuk') }}">
+            <i class="fas fa-inbox fa-sm fa-fw mr-2"></i>
+            <span>Daftar Surat Masuk</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.surat-keluar') }}">
+            <i class="fas fa-inbox fa-sm fa-fw mr-2"></i>
+            <span>Daftar Surat Keluar</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.upload-surat') }}">
+            <i class="fas fa-envelope-open-text fa-sm fa-fw mr-2"></i>
+            <span>Upload Surat</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -56,7 +86,9 @@
             <i class="fas fa-user fa-sm fa-fw mr-2"></i>
             <span>Users</span></a>
     </li>
-    <!-- END ADMIN -->
+
+    @endif
+    <!-- ================= END ADMIN =========== -->
 
    
 
