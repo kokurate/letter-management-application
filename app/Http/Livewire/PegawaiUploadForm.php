@@ -3,10 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Surat;
-<<<<<<< HEAD
-=======
+
 use Illuminate\Contracts\Session\Session;
->>>>>>> 176421ae6fbf37e7ccdd71001558c65bd499ed25
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -15,7 +13,7 @@ class PegawaiUploadForm extends Component
 {
     use WithFileUploads;
 
-    public $tipe_surat, $no_surat, $perihal, $tanggal, $alamat_pengirim, $alamat_tujuan, $file;
+    public $perihal, $tanggal, $file;
 
     public function render()
     {
@@ -26,20 +24,12 @@ class PegawaiUploadForm extends Component
     {
         
         $this->validate([
-            'tipe_surat' => 'required|in:Surat Masuk,Surat Keluar',
-            'no_surat' => 'required|max:255',
             'perihal' => 'required|max:255',
             'tanggal' => 'required|date',
-            'alamat_pengirim' => 'required|max:255',
-            'alamat_tujuan' => 'required|max:255',
             'file' => 'required|file|max:2024|mimes:pdf',
         ],[
-            'tipe_surat.required' => ':attribute tidak boleh kosong',
-            'no_surat.required' => ':attribute tidak boleh kosong',
             'perihal.required' => ':attribute tidak boleh kosong',
             'tanggal.required' => ':attribute tidak boleh kosong',
-            'alamat_pengirim.required' => ':attribute tidak boleh kosong',
-            'alamat_tujuan.required' => ':attribute tidak boleh kosong',
             'file.required' => ':attribute tidak boleh kosong',
             'file.file' => ':attribute tidak valid',
             'file.mimes' => ':attribute tidak valid',
@@ -61,28 +51,18 @@ class PegawaiUploadForm extends Component
             $surat = new Surat();
             $surat->status_id = 1;
             $surat->user_id = auth()->user()->id;
-            $surat->tipe_surat = $this->tipe_surat;
-            $surat->no_surat = $this->no_surat;
             $surat->perihal = $this->perihal;
             $surat->tanggal = $this->tanggal;
-            $surat->alamat_pengirim = $this->alamat_pengirim;
-            $surat->alamat_tujuan = $this->alamat_tujuan;
             $surat->file = $new_filename;
             $saved = $surat->save();
             
     
                 if($saved){
-<<<<<<< HEAD
-=======
-                    session()->flash('success', 'User baru telah berhasil ditambahkan');
->>>>>>> 176421ae6fbf37e7ccdd71001558c65bd499ed25
-                    $this->dispatchBrowserEvent('success',['message' => 'User baru telah berhasil ditambahkan.']);
-                    $this->tipe_surat = null;
-                    $this->no_surat = null;
+
+                    session()->flash('success', 'Surat baru telah berhasil ditambahkan');
+                    $this->dispatchBrowserEvent('success',['message' => 'Surat baru telah berhasil ditambahkan.']);
                     $this->perihal = null;
                     $this->tanggal = null;
-                    $this->alamat_pengirim = null;
-                    $this->alamat_tujuan = null;
                     $this->file = null;
                 }else{
                     $this->dispatchBrowserEvent('error',['message' => 'Ada yang salah saat upload surat']);
@@ -92,18 +72,6 @@ class PegawaiUploadForm extends Component
         else{
             $this->dispatchBrowserEvent('error',['message' => 'Ada yang salah saat upload surat']);
         }
-
-    
-
-        // $saved =$surat->save();
-
-        // if($saved){
-        //  
-
-        // }else{
-        //     $this->dispatchBrowserEvent('error',['Something went wrong']);
-        // }
-
 
     }
 
