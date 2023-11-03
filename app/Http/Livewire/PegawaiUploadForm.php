@@ -3,6 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Surat;
+<<<<<<< HEAD
+=======
+use Illuminate\Contracts\Session\Session;
+>>>>>>> 176421ae6fbf37e7ccdd71001558c65bd499ed25
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -68,6 +72,10 @@ class PegawaiUploadForm extends Component
             
     
                 if($saved){
+<<<<<<< HEAD
+=======
+                    session()->flash('success', 'User baru telah berhasil ditambahkan');
+>>>>>>> 176421ae6fbf37e7ccdd71001558c65bd499ed25
                     $this->dispatchBrowserEvent('success',['message' => 'User baru telah berhasil ditambahkan.']);
                     $this->tipe_surat = null;
                     $this->no_surat = null;
