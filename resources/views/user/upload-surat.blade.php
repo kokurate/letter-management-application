@@ -44,5 +44,24 @@
 
     </script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function deleteItem(id) {
+            swal({
+                title: "Apakah Anda Yakin?",
+                text: "Surat Akan Terhapus Permanen!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById('delete-form-' + id).submit();
+                } else {
+                    swal("Surat Tidak Jadi Dihapus!");
+                }
+            });
+        }
+    </script>
+
 
 @endpush

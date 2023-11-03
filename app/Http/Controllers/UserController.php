@@ -217,6 +217,33 @@ class UserController extends Controller
      
 
     }
+
+
+    public function kadis_upload_surat_delete($id)
+    {
+        
+         $surat = Surat::find($id);
+         $path = "surat/";
+         $file = $surat->getRawOriginal('file');
+ 
+         // dd(Storage::disk('public')->path($path . $file));
+ 
+ 
+         if($file != null  && Storage::disk('public')->exists($path.$file)){
+             // delete 
+             Storage::disk('public')->delete($path.$file);
+         }
+ 
+         $delete_surat = $surat->delete();
+         
+ 
+         if($delete_surat){
+            return redirect()->back()->withToastSuccess('Surat Berhasil Dihapus');
+         }else{
+            return back()->with('toast_error', 'Error');
+         }
+
+    }
   
 
 }
