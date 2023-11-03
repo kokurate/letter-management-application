@@ -29,17 +29,18 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardExample" style="">
                     <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('user.surat-masuk.store', $detail->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                          
                             <div class="mb-3">
                                 <label for="file" class="form-label">File Surat</label>
-                                <input class="form-control @error('file')is-invalid @enderror" 
-                                    type="file" id="file" wire:model="file" accept=".pdf">    
+                                <input class="form-control @error('file') is-invalid @enderror" 
+                                    type="file" id="file" name="file" accept=".pdf">    
                                 @error('file')
-                                    <span class="text-danger">{{ $message }}</span>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            
         
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-xl mt-3" 
