@@ -132,6 +132,15 @@ class AdminController extends Controller
         ]);
     }
 
+    public function check_surat_edit($id)
+    {
+        return view('user.admin.edit-surat',[
+            'h1' => 'Lengkapi Surat',
+            'detail' => Surat::with('user')->find($id),
+            'pageTitle' => 'Admin Surat Keluar Detail',
+        ]);
+    }
+
 
     public function edit_surat_store(Request $request, $id)
     {

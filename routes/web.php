@@ -64,6 +64,11 @@ Route::middleware('auth','level:1,2')->group(function ()
         Route::prefix('/admin')->name('admin.')->group(function()
         {
 
+            ## LENGKAPI SURAT
+            Route::view('/check-surat','user.admin.check-surat')->name('check-surat');
+            Route::get('/check-surat/edit/{id}',[AdminController::class,'check_surat_edit'])->name('check-surat-edit');
+
+
             ## SURAT MASUK
             Route::view('/surat-masuk','user.admin.surat-masuk')->name('surat-masuk');
             Route::get('/surat-masuk/edit/{id}',[AdminController::class,'surat_masuk_edit'])->name('surat-masuk-edit');

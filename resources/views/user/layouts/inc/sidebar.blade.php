@@ -54,9 +54,9 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('admin.check-surat') }}">
             <i class="fas fa-inbox fa-sm fa-fw mr-2"></i>
-            <span>Daftar Surat</span></a>
+            <span>Lengkapi Surat</span></a>
     </li>
 
 
