@@ -113,6 +113,15 @@ class AdminController extends Controller
         ]);
     }
 
+    public function surat_masuk_edit($id)
+    {
+        return view('user.admin.edit-surat',[
+            'detail' => Surat::with('user')->find($id),
+            'pageTitle' => 'Admin Surat Masuk Detail',
+        ]);
+    }
+
+
     public function edit_surat_store(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -181,7 +190,7 @@ class AdminController extends Controller
 
 
             if($saved){
-                return redirect()->route('admin.riwayat-upload-surat')->withToastSuccess('Surat Berhasil Diedit');
+                return redirect()->back()->withToastSuccess('Surat Berhasil Diedit');
             }else{
                 return back()->with('toast_error', 'Error');
             }
@@ -201,7 +210,7 @@ class AdminController extends Controller
             $saved = $surat->save();
      
             if($saved){
-                return redirect()->route('admin.riwayat-upload-surat')->withToastSuccess('Surat Berhasil Diedit');
+                return redirect()->back()->withToastSuccess('Surat Berhasil Diedit');
             }else{
                 return back()->with('toast_error', 'Error');
             }

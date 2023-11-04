@@ -29,6 +29,7 @@
                                 <th>No Surat</th>
                                 <th>Tanggal</th>
                                 <th>Alamat Pengirim</th>
+                                <th>File</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                             ->translatedFormat('d M Y') }}
                                     </td>
                                     <td>{{ $data->alamat_pengirim ?? '-----'}}</td>
+                                    <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
                                         <a href="{{ route('user.surat-masuk.delete', $data->id) }}" 
                                             class="btn btn-danger btn-sm delete" data-id="8"
@@ -50,9 +52,13 @@
                                                 <i class="fas fa-trash"></i>
                                         </a>
                                         
-                                        <a href="{{ route('user.surat-masuk.detail', ['detail' => $data->id]) }}?token={{ session('surat_token') }}" 
+                                        {{-- <a href="{{ route('user.surat-masuk.detail', ['detail' => $data->id]) }}?token={{ session('surat_token') }}" 
                                                 class="btn btn-secondary btn-sm delete" data-id="1">
                                                 <i class="fas fa-eye"></i>
+                                        </a> --}}
+
+                                        <a href="{{ route('admin.surat-masuk-edit', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
+                                            <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         
                                     </td>
