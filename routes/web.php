@@ -42,7 +42,7 @@ Route::middleware('auth','level:1,2')->group(function ()
 {
     Route::prefix('/user')->name('user.')->group(function()
     {
-        Route::view('/dashboard','user.index')->name('index');
+        Route::get('/dashboard',[UserController::class,('index')])->name('index');
 
         #### SURAT MASUK
         Route::get('/surat-masuk',[UserController::class,('kadis_surat_masuk')])->name('surat-masuk');

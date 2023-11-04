@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Surat;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+
+    public function index()
+    {
+        return view('user.index',[
+            'admin_sm' => Surat::where('tipe_surat', 'Surat Masuk')->count(),
+            'admin_sk' => Surat::where('tipe_surat', 'Surat Keluar')->count(),
+            'users' => User::all()->count(),
+            'kadis_incoming' => Surat::where('status_id',1)->count(),
+            'kadis_upload' => Surat::where('user_id', auth()->user()->id)->count(),
+        ]);
+    }
 
     public function kadis_surat_masuk()
     {

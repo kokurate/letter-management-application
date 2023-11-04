@@ -10,6 +10,8 @@
     <meta name="author" content="">
 
     <title>@yield('pageTitle')</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Custom fonts for this template-->
     <link href="/templates/back/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -61,13 +63,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {{-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- End of Footer -->
 
         </div>

@@ -10,7 +10,8 @@
     <meta name="author" content="">
 
     <title>Login</title>
-
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Custom fonts for this template-->
     <link href="/templates/back/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -51,9 +52,9 @@
                                     @livewire('login-form')
 
                                     <hr>
-                                    <div class="text-center">
+                                    {{-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

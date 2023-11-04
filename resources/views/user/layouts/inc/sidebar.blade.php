@@ -1,10 +1,10 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.index') }}">
+        {{-- <div class="sidebar-brand-icon">
+            <img src="{{ asset('logo.png') }}" alt="LOGO" style="width: 50%;margin:0;padding:0">
+        </div> --}}
         <div class="sidebar-brand-text mx-3">DPRKP</div>
     </a>
 
