@@ -54,19 +54,28 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.surat-masuk') }}">
+        <a class="nav-link" href="">
             <i class="fas fa-inbox fa-sm fa-fw mr-2"></i>
-            <span>Daftar Surat Masuk</span></a>
+            <span>Daftar Surat</span></a>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Surat-surat</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Daftar Surat</h6>
+                <a class="collapse-item" href="{{ route('admin.surat-masuk') }}">Masuk</a>
+                <a class="collapse-item" href="{{ route('admin.surat-keluar') }}">Keluar</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.surat-keluar') }}">
-            <i class="fas fa-inbox fa-sm fa-fw mr-2"></i>
-            <span>Daftar Surat Keluar</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.upload-surat') }}">
+        <a class="nav-link" href="{{ route('admin.riwayat-upload-surat') }}">
             <i class="fas fa-envelope-open-text fa-sm fa-fw mr-2"></i>
             <span>Upload Surat</span></a>
     </li>

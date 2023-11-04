@@ -1,5 +1,5 @@
 @extends('user.layouts.pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Daftar Surat Masuk')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Upload Surat Kadis')
 
 @section('content')
 

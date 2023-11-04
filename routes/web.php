@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -65,8 +66,15 @@ Route::middleware('auth','level:1,2')->group(function ()
 
             ## SURAT MASUK
             Route::view('/surat-masuk','user.admin.surat-masuk')->name('surat-masuk');
+            
+            ## SURAT KELUAR
             Route::view('/surat-keluar','user.admin.surat-keluar')->name('surat-keluar');
             
+            ## UPLOAD SURAT
+            Route::view('/riwayat-upload-surat','user.admin.riwayat-upload-surat')->name('riwayat-upload-surat');
+            Route::view('/upload-surat', 'user.admin.upload-surat')->name('upload-surat');
+            Route::post('/upload-surat/store',[AdminController::class,'upload_surat_store'])->name('upload-surat-store');
+
             Route::view('/users','user.admin.users')->name('users');
             Route::get('/testing', function () {
                 echo "testing";

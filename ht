@@ -18,3 +18,8 @@ composer require realrashid/sweet-alert
 php artisan sweetalert:publish
 
 php artisan make:livewire KadisUploadForm
+
+php artisan make:livewire AdminUploadForm
+php artisan make:controller AdminController
+
+php artisan optimize
