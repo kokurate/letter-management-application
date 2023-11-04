@@ -74,6 +74,8 @@ Route::middleware('auth','level:1,2')->group(function ()
             Route::view('/riwayat-upload-surat','user.admin.riwayat-upload-surat')->name('riwayat-upload-surat');
             Route::view('/upload-surat', 'user.admin.upload-surat')->name('upload-surat');
             Route::post('/upload-surat/store',[AdminController::class,'upload_surat_store'])->name('upload-surat-store');
+            Route::get('/upload-surat/edit/{id}',[AdminController::class,'upload_surat_edit'])->name('upload-surat-edit');
+            Route::post('/upload-surat/edit/{id}/store',[AdminController::class,'edit_surat_store'])->name('upload-surat-edit-store');
 
             Route::view('/users','user.admin.users')->name('users');
             Route::get('/testing', function () {

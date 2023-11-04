@@ -34,6 +34,7 @@
                                     <th>Perihal</th>
                                     <th>Tanggal</th>
                                     <th>No Surat</th>
+                                    <th>File</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                     <td>{{ $data->perihal }}</td>
                                     <td>{{ Carbon\Carbon::parse($data->tanggal)->translatedFormat('d M Y') }}</td>
                                     <td>{{ $data->no_surat }}</td>
+                                    <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
                                         <form action="{{ route('user.upload-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
                                         <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
@@ -53,7 +55,7 @@
                                             onclick="deleteItem({{ $data->id }})">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                        <a href="{{ route('user.upload-surat-detail', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
+                                        <a href="{{ route('admin.upload-surat-edit', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                     </td>
