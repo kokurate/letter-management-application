@@ -16,8 +16,23 @@ class StatusSeeder extends Seeder
     public function run()
     {
         // 1
-        // Status::create([
-        //     'name' => ''
-        // ]);
+        Status::create([
+            'status' => 'Pegawai Mengupload Surat'
+        ]);
+
+        // 2
+        Status::create([
+            'status' => 'Kadis Menandatangani Surat Pegawai'
+        ]);
+
+        // 3
+        Status::create([
+            'status' => 'Kadis Mengupload Surat'
+        ]);
+
+        // 4
+        Status::create([
+            'status' => 'Admin Mengupload Surat'
+        ]);
     }
 }
