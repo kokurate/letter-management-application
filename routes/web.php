@@ -72,6 +72,9 @@ Route::middleware('auth','level:1,2')->group(function ()
             
             ## SURAT KELUAR
             Route::view('/surat-keluar','user.admin.surat-keluar')->name('surat-keluar');
+            Route::get('/surat-keluar/edit/{id}',[AdminController::class,'surat_keluar_edit'])->name('surat-keluar-edit');
+            Route::delete('/surat-keluar/{id}/delete',[AdminController::class,('delete_surat')])->name('surat-keluar-delete');
+
             
             ## UPLOAD SURAT
             Route::view('/riwayat-upload-surat','user.admin.riwayat-upload-surat')->name('riwayat-upload-surat');

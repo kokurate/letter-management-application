@@ -108,6 +108,7 @@ class AdminController extends Controller
     public function upload_surat_edit($id)
     {
         return view('user.admin.edit-surat',[
+            'h1' => 'Upload Surat',
             'detail' => Surat::with('user')->find($id),
             'pageTitle' => 'Admin Surat Detail',
         ]);
@@ -116,8 +117,18 @@ class AdminController extends Controller
     public function surat_masuk_edit($id)
     {
         return view('user.admin.edit-surat',[
+            'h1' => 'Edit Surat',
             'detail' => Surat::with('user')->find($id),
             'pageTitle' => 'Admin Surat Masuk Detail',
+        ]);
+    }
+
+    public function surat_keluar_edit($id)
+    {
+        return view('user.admin.edit-surat',[
+            'h1' => 'Edit Surat',
+            'detail' => Surat::with('user')->find($id),
+            'pageTitle' => 'Admin Surat Keluar Detail',
         ]);
     }
 
