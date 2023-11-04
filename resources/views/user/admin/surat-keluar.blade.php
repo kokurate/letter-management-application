@@ -17,7 +17,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Surat Masuk</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Surat Keluar</h6>
                 </div>
                 
                 <div class="card-body">
@@ -95,6 +95,25 @@
             scrollX: true,
         });
 
+    </script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function deleteItem(id) {
+            swal({
+                title: "Apakah Anda Yakin?",
+                text: "Surat Akan Terhapus Permanen!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById('delete-form-' + id).submit();
+                } else {
+                    swal("Surat Tidak Jadi Dihapus!");
+                }
+            });
+        }
     </script>
 
 
