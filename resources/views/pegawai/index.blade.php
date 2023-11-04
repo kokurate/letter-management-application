@@ -21,6 +21,9 @@
         <!-- Toastr Cdn-->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
        
+        <!-- Data Table-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
         @livewireStyles
 
     </head>
@@ -33,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#upload">Upload</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#history">History</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#history">Daftar Surat</a></li>
                         <li class="nav-item">
                             <a href="{{ route('auth.logout') }}" 
                                 class="nav-link" 
@@ -86,24 +89,108 @@
                 
             </div>
 
-            <!-- Table Daftar Surat
-                <br><br>
-            <div class="container px-4 px-lg-5 mt-5" id="history">
+  
+            <br><br>
+            <div class="container px-4 px-lg-5 mt-5 mb-12" id="history">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <h2 class="mt-0">Let's Get In Touch!</h2>
+                        <h2 class="mt-0">Daftar Surat</h2>
                         <hr class="divider" />
-                        <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>
+                        <p class="text-muted mb-5">daftar surat yang sudah lengkap</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <table id="index" class="table hover " style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Perihal</th>
+                                    <th>Tanggal</th>
+                                    <th>File</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(App\Models\Surat::where('tipe_surat', '!=', null)
+                                                        ->where('alamat_pengirim', '!=', null)
+                                                        ->where('alamat_tujuan', '!=', null)
+                                                        ->where('no_surat', '!=', null)
+                                                        ->orderBy('created_at', 'asc')
+                                                        ->get() 
+                                                        as 
+                                                        $data)
+                                    <tr>
+                                        <td>{{ $data->perihal }}</td>
+                                        <td>{{ Carbon\Carbon::parse($data->tanggal)
+                                                ->translatedFormat('d M Y') }}
+                                        </td>
+                                        <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
+                                        <td class="text-center">  
+                                            <a href="#" class="my-1 btn btn-primary btn-sm" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#Modal-{{ $data->id }}">
+                                                <i class="fas fa-eye"></i>Detail
+                                            </a>
+                                        </td>
+                                    </tr>  
+
+                                    <!-- ======== MODAL ======== -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="Modal-{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Add your modal content here -->
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item"><strong>NAMA</strong> : {{ auth()->user()->name }}</li>
+                                                        <li class="list-group-item"><strong>PERIHAL</strong> : {{ $data->perihal }}</li>
+                                                        <li class="list-group-item"><strong>NO SURAT</strong> : {{ $data->no_surat }}</li>
+                                                        <li class="list-group-item"><strong>TIPE SURAT</strong> : {{ $data->tipe_surat }}</li>
+                                                        <li class="list-group-item"><strong>ALAMAT PENGIRIM</strong> : {{ $data->alamat_pengirim }}</li>
+                                                        <li class="list-group-item"><strong>ALAMAT TUJUAN</strong> : {{ $data->alamat_tujuan }}</li>
+                                                        <li class="list-group-item"><strong>TANGGAL</strong> : {{ $data->tanggal }}</li>
+                                                    </ul>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ======== MODAL END ======== -->
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            -->
+            
+            
+            <br><br><br><br><br><br><br><br><br><br>
 
         </section>
 
+        
 
          <!-- Jquery-->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+     <!-- Data Table-->
+     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+     <!-- Data Table-->
+     <script>
+         new DataTable('#index', {
+             scrollX: true,
+         });
+     </script>
 
 
     <!-- Toastr  cdn -->
