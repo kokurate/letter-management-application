@@ -76,6 +76,8 @@ Route::middleware('auth','level:1,2')->group(function ()
             Route::post('/upload-surat/store',[AdminController::class,'upload_surat_store'])->name('upload-surat-store');
             Route::get('/upload-surat/edit/{id}',[AdminController::class,'upload_surat_edit'])->name('upload-surat-edit');
             Route::post('/upload-surat/edit/{id}/store',[AdminController::class,'edit_surat_store'])->name('upload-surat-edit-store');
+            Route::delete('/upload-surat/{id}/delete',[AdminController::class,('delete_surat')])->name('upload-surat-delete');
+
 
             Route::view('/users','user.admin.users')->name('users');
             Route::get('/testing', function () {

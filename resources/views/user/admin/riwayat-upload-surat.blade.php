@@ -49,7 +49,7 @@
                                     <td>{{ $data->no_surat }}</td>
                                     <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
-                                        <form action="{{ route('user.upload-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
+                                        <form action="{{ route('admin.upload-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
                                         <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
                                             data-confirm-delete="true"
                                             onclick="deleteItem({{ $data->id }})">
