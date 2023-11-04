@@ -67,6 +67,7 @@ Route::middleware('auth','level:1,2')->group(function ()
             ## SURAT MASUK
             Route::view('/surat-masuk','user.admin.surat-masuk')->name('surat-masuk');
             Route::get('/surat-masuk/edit/{id}',[AdminController::class,'surat_masuk_edit'])->name('surat-masuk-edit');
+            Route::delete('/surat-masuk/{id}/delete',[AdminController::class,('delete_surat')])->name('surat-masuk-delete');
 
             
             ## SURAT KELUAR

@@ -45,11 +45,11 @@
                                     <td>{{ $data->alamat_pengirim ?? '-----'}}</td>
                                     <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
-                                        <a href="{{ route('user.surat-masuk.delete', $data->id) }}" 
-                                            class="btn btn-danger btn-sm delete" data-id="8"
+                                        <form action="{{ route('admin.surat-masuk-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
+                                        <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
                                             data-confirm-delete="true"
-                                            onclick="event.preventDefault();document.getElementById('delete-form').submit();">
-                                                <i class="fas fa-trash"></i>
+                                            onclick="deleteItem({{ $data->id }})">
+                                            <i class="fas fa-trash"></i>
                                         </a>
                                         
                                         {{-- <a href="{{ route('user.surat-masuk.detail', ['detail' => $data->id]) }}?token={{ session('surat_token') }}" 
@@ -63,7 +63,6 @@
                                         
                                     </td>
                                 </tr>  
-                                <form action="{{ route('user.surat-masuk.delete', $data->id) }}" id="delete-form" method="post">@csrf @method('delete')</form>  
                             @endforeach
                         </tbody>
                     </table>
@@ -97,5 +96,23 @@
 
     </script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function deleteItem(id) {
+            swal({
+                title: "Apakah Anda Yakin?",
+                text: "Surat Akan Terhapus Permanen!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById('delete-form-' + id).submit();
+                } else {
+                    swal("Surat Tidak Jadi Dihapus!");
+                }
+            });
+        }
+    </script>
 
 @endpush
