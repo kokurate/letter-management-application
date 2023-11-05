@@ -2,9 +2,9 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.index') }}">
-        {{-- <div class="sidebar-brand-icon">
-            <img src="{{ asset('logo.png') }}" alt="LOGO" style="width: 50%;margin:0;padding:0">
-        </div> --}}
+        <div class="sidebar-brand-icon">
+            <img src="{{ asset('logo.png') }}" alt="LOGO" class="img-fluid" style="width: 50px;" >
+        </div>
         <div class="sidebar-brand-text mx-3">DPRKP</div>
     </a>
 
@@ -77,7 +77,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.riwayat-upload-surat') }}">
             <i class="fas fa-envelope-open-text fa-sm fa-fw mr-2"></i>
-            <span>Upload Surat</span></a>
+            <span>Tambah Surat</span></a>
     </li>
 
     <!-- Divider -->

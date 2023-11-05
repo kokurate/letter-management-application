@@ -63,6 +63,9 @@ Route::middleware('auth','level:1,2')->group(function ()
     {     
         Route::prefix('/admin')->name('admin.')->group(function()
         {
+            ## DETAIL
+            Route::get('/surat/detail/{id}',[AdminController::class,'surat_detail'])->name('surat.detail');
+
 
             ## LENGKAPI SURAT
             Route::view('/check-surat','user.admin.check-surat')->name('check-surat');

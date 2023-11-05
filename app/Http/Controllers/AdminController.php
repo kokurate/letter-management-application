@@ -240,5 +240,15 @@ class AdminController extends Controller
 
     }
 
+
+    public function surat_detail($id)
+    {
+        
+        return view('user.admin.surat-detail',[
+            'detail' => Surat::with('user')->find($id),
+        ]);
+
+    }
+
     
 }

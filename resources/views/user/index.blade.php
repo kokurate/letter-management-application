@@ -20,60 +20,66 @@
         @if(auth()->user()->type_id == 1)
             <!-- SURAT MASUK -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 pl-3">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Surat Masuk
+                <a href="{{ route('admin.surat-masuk') }}" class="text-decoration-none">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 pl-3">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Surat Masuk
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $admin_sm }}</div>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $admin_sm }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-inbox fa-2x text-gray-300 pr-3"></i>
+                                <div class="col-auto">
+                                    <i class="fas fa-inbox fa-2x text-gray-300 pr-3"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 pl-3">
-                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                    Surat Keluar
+                <a href="{{ route('admin.surat-keluar') }}" class="text-decoration-none">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 pl-3">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                        Surat Keluar
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $admin_sk }}
+                                    </div>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $admin_sk }}
+                                <div class="col-auto">
+                                    <i class="fas fa-envelope-open-text fa-2x text-gray-300 pr-3"></i>
                                 </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-envelope-open-text fa-2x text-gray-300 pr-3"></i>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 pl-3">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    User
+                <a href="{{ route('admin.users') }}" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 pl-3">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        User
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $users }}
+                                    </div>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $users }}
+                                <div class="col-auto">
+                                    <i class="fas fa-users fa-2x text-gray-300 pr-3"></i>
                                 </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-users fa-2x text-gray-300 pr-3"></i>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         @endif
         <!-- ====================================================================== -->
@@ -82,42 +88,46 @@
         @if(auth()->user()->type_id == 2)
             <!-- SURAT MASUK -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 pl-3">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Surat Masuk
+                <a href="{{ route('user.surat-masuk') }}" class="text-decoration-none">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 pl-3">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Surat Masuk
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kadis_incoming }}</div>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kadis_incoming }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-inbox fa-2x text-gray-300 pr-3"></i>
+                                <div class="col-auto">
+                                    <i class="fas fa-inbox fa-2x text-gray-300 pr-3"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- UPLOAD SURAT -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2 pl-3">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Upload Surat
+                <a href="{{ route('user.upload-surat') }}" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 pl-3">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Upload Surat
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{ $kadis_upload }}
+                                    </div>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $kadis_upload }}
+                                <div class="col-auto">
+                                    <i class="fas fa-envelope-open-text fa-2x text-gray-300 pr-3"></i>
                                 </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-envelope-open-text fa-2x text-gray-300 pr-3"></i>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         @endif
         <!-- ====================================================================== -->

@@ -65,7 +65,7 @@
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5" style="font-size: 25px">Selamat Datang Pegawai</p>
+                        <p class="text-white-75 mb-5" style="font-size: 25px">Selamat Datang</p>
                         <p class="text-white-75 mb-5" style="font-size: 25px;margin-top:-40px" >{{ auth()->user()->name }}</p>
                         <a class="btn btn-primary btn-xl" href="#upload">Upload Surat</a>
                     </div>
@@ -105,6 +105,7 @@
                         <table id="index" class="table hover " style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>No Surat</th>
                                     <th>Perihal</th>
                                     <th>Tanggal</th>
                                     <th>File</th>
@@ -121,6 +122,7 @@
                                                         as 
                                                         $data)
                                     <tr>
+                                        <td>{{ $data->no_surat }}</td>
                                         <td>{{ $data->perihal }}</td>
                                         <td>{{ Carbon\Carbon::parse($data->tanggal)
                                                 ->translatedFormat('d M Y') }}

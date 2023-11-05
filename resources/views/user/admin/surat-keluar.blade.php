@@ -29,7 +29,6 @@
                                 <th>No Surat</th>
                                 <th>Tanggal</th>
                                 <th>Alamat Pengirim</th>
-                                <th>File</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -43,10 +42,9 @@
                                             ->translatedFormat('d M Y') }}
                                     </td>
                                     <td>{{ $data->alamat_pengirim ?? '-----'}}</td>
-                                    <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
                                         <form action="{{ route('admin.surat-keluar-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
-                                        <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
+                                        <a href="#" class="my-1 py-1 px-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
                                             data-confirm-delete="true"
                                             onclick="deleteItem({{ $data->id }})">
                                             <i class="fas fa-trash"></i>
@@ -57,8 +55,12 @@
                                                 <i class="fas fa-eye"></i>
                                         </a> --}}
 
-                                        <a href="{{ route('admin.surat-keluar-edit', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
+                                        <a href="{{ route('admin.surat-keluar-edit', $data->id) }}" class="my-1 py-1 px-1 btn btn-primary btn-sm delete">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('admin.surat.detail', ['id' => $data->id]) }}" 
+                                            class="btn btn-secondary btn-sm delete px-1 py-1">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                         
                                     </td>

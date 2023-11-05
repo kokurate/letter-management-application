@@ -108,7 +108,7 @@
 
 
                         <div class="mb-3">
-                            <label for="file" class="form-label">File Surat</label>
+                            <label for="file" class="form-label">File Surat <span class="text-danger">(optional)</span></label>
                             <input class="form-control @error('file')is-invalid @enderror" 
                                 type="file" id="file" name="file" accept=".pdf">    
                             @error('file')

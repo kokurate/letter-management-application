@@ -26,33 +26,24 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Perihal</th>
-                                <th>No Surat</th>
                                 <th>Tanggal</th>
-                                <th>Alamat Pengirim</th>
-                                <th>Alamat Tujuan</th>
-                                <th>File</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(App\Models\Surat::where('tipe_surat',null)
-                                                        ->orWhere('alamat_pengirim', null)
-                                                        ->orWhere('alamat_tujuan', null)
-                                                        ->orWhere('no_surat', null)
-                                                        ->orderBy('created_at', 'asc')
-                                                        ->get() 
-                                                        as 
-                                                        $data)
+                            @foreach(App\Models\Surat::whereIn('status_id', [2, 3])
+                                                    // ->orWhere('tipe_surat', null)
+                                                    // ->orWhere('alamat_pengirim', null)
+                                                    // ->orWhere('alamat_tujuan', null)
+                                                    // ->orWhere('no_surat', null)
+                                                    ->orderBy('created_at', 'asc')
+                                                    ->get() as $data)
                                 <tr>
                                     <td>{{ $data->user->name }}</td>
                                     <td>{{ $data->perihal }}</td>
-                                    <td>{{ $data->no_surat ?? '-----' }}</td>
                                     <td>{{ Carbon\Carbon::parse($data->tanggal)
                                             ->translatedFormat('d M Y') }}
                                     </td>
-                                    <td>{{ $data->alamat_pengirim ?? '-----'}}</td>
-                                    <td>{{ $data->alamat_tujuan ?? '-----'}}</td>
-                                    <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                     <td class="text-center">  
                                         {{-- <form action="{{ route('admin.check-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
                                         <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
@@ -68,6 +59,10 @@
 
                                         <a href="{{ route('admin.check-surat-edit', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('admin.surat.detail', ['id' => $data->id]) }}" 
+                                            class="btn btn-secondary btn-sm delete">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                         
                                     </td>

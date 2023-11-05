@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Riwayat Upload Surat</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Daftar Surat yang ditambahkan admin</h6>
                         <div>
                             <a href="{{ route('admin.upload-surat') }}" class="btn btn-sm btn-primary">
                                 Tambah
@@ -39,10 +39,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Surat::where('user_id', auth()->user()->id)
-                                            ->where('status_id',4)
-                                            ->orderBy('created_at','asc')
-                                            ->get() as $data)                            
+                                @foreach (App\Models\Surat::where('user_id', auth()->user()->userType->id == 1)
+                                                                    ->where('status_id', 4)
+                                                                    ->orderBy('created_at', 'asc')
+                                                                    ->get() as $data) 
+                                                     
                                 <tr>
                                     <td>{{ $data->perihal }}</td>
                                     <td>{{ Carbon\Carbon::parse($data->tanggal)->translatedFormat('d M Y') }}</td>
@@ -57,6 +58,10 @@
                                         </a>
                                         <a href="{{ route('admin.upload-surat-edit', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('admin.surat.detail', ['id' => $data->id]) }}" 
+                                            class="btn btn-secondary btn-sm delete" data-id="1">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                     </td>
                                 </tr>   

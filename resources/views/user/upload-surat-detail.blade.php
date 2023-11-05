@@ -25,7 +25,7 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Accordion -->
                     <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                        <h4 class="m-0 font-weight-bold text-primary">Edit Surat</h4>
+                        <h5 class="m-0 font-weight-bold text-primary">Edit Surat</h5>
                     </a>
                     <!-- Card Content - Collapse -->
                     <div class="collapse" id="collapseCardExample" style="">
@@ -82,11 +82,30 @@
             <div class=" my-2">
                 <div class="card">
                     <div class="card-body">
-                        <h4><strong>Nama</strong> : {{ $detail->user->name }}</h4>
-                        <h4><strong>Perihal</strong> : {{ $detail->perihal }}</h4>
-                        <h4><strong>Tanggal</strong> : {{ Carbon\Carbon::parse($detail->tanggal)
-                                                            ->translatedFormat('d M Y') }}
-                        </h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Nama</strong> : {{ $detail->user->name ?? '---'}}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Perihal</strong> : {{ $detail->perihal ?? '---' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>No Surat</strong> : {{ $detail->no_surat ?? '---' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Tipe Surat</strong> : {{ $detail->tipe_surat ?? '---' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Alamat Pengirim</strong> : {{ $detail->alamat_pengirim ?? '---' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Alamat Tujuan</strong> : {{ $detail->alamat_tujuan ?? '---' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Tanggal</strong> : {{ Carbon\Carbon::parse($detail->tanggal)
+                                                                            ->translatedFormat('d M Y') }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
