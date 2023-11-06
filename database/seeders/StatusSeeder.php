@@ -32,7 +32,7 @@ class StatusSeeder extends Seeder
 
         // 4
         Status::create([
-            'status' => 'Admin Mengupload Surat'
+            'status' => 'Admin Melengkapi Surat'
         ]);
     }
 }

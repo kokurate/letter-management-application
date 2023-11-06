@@ -19,7 +19,7 @@ class Surat extends Model
         'tanggal',
         'no_surat',
         'file',
-        'file_ttd',
+        'notified',
     ];
 
     public function status(){

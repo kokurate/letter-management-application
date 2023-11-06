@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailNotification;
 use App\Models\Surat;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 
 class UserController extends Controller
@@ -99,6 +101,7 @@ class UserController extends Controller
         // $upload = Storage::disk('public')->put($path.$new_filename, (string) file_get_contents($file));
         $upload = $file->storeAs($path, $new_filename, 'public');
 
+       
         if($upload)
         {
             $surat->status_id = 2;
@@ -106,6 +109,19 @@ class UserController extends Controller
             $saved = $surat->save();
 
             if($saved){
+
+            // EMAIL NOTIFICATION
+                $data = [
+                    'title' => 'Notification',
+                    'sub_title' => 'Kadis Telah Mengupload File Terbaru Untuk Surat Anda',
+                    'status' =>  'Status : '.$surat->status->status, 
+                    'info' =>  'Silahkan Kunjungi Website Untuk Informasi Lebih Lanjut', 
+                    'url' => route('auth.login'),
+                ];
+
+                Mail::to($surat->user->email)->send(new EmailNotification($data));
+
+            
                 return redirect()->route('user.surat-masuk')->withToastSuccess('Surat Berhasil Diproses');
             }else{
                 return back()->with('toast_error', 'Error');

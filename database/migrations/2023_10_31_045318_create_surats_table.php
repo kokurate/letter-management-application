@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('tanggal')->nullable();
             $table->string('no_surat')->nullable();
             $table->string('file')->nullable();
-            $table->string('file_ttd')->nullable();
+            $table->boolean('notified')->nullable();
             $table->timestamps();
         });
     }

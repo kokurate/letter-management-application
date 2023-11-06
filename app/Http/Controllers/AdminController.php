@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailNotification;
 use App\Models\Surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
+
 
 class AdminController extends Controller
 {
@@ -198,29 +201,50 @@ class AdminController extends Controller
             // Update file baru yang so ttd
             $surat = Surat::findOrFail($id);
             $surat->status_id = 4;
-            $surat->user_id = auth()->user()->id;
             $surat->tipe_surat = $request->tipe_surat;
             $surat->no_surat = $request->no_surat;
             $surat->perihal = $request->perihal;
             $surat->tanggal = $request->tanggal;
             $surat->alamat_pengirim = $request->alamat_pengirim;
             $surat->alamat_tujuan = $request->alamat_tujuan;
-            $surat->file = $new_filename;
             $saved = $surat->save();
 
 
             if($saved){
+
+                 // EMAIL
+                // CEK NOTIFIED AND LEVEL
+                $user = Surat::findOrFail($id);
+
+                if(($user->notified == false || $user->notified == null) && ($user->user->type_id == 2 || $user->user->type_id == 3)) {
+                    // EMAIL NOTIFICATION
+                    $data = [
+                        'title' => 'Notification',
+                        'sub_title' => 'Admin Telah Melengkapi Surat',
+                        // 'status' =>  'Status : '.$user->status->status, 
+                        'status' =>  'Status : '.$user->status->status, 
+                        'info' =>  'Silahkan Kunjungi Website Untuk Informasi Lebih Lanjut', 
+                        'url' => route('auth.login'),
+                    ];
+            
+                    Mail::to($user->user->email)->send(new EmailNotification($data));
+                }
+
+                $user->notified = true;
+                $user->save();
+
+
                 return redirect()->back()->withToastSuccess('Surat Berhasil Diedit');
             }else{
                 return back()->with('toast_error', 'Error');
             }
         }
         else
-        {
+        {         
+
             // Update file baru yang so ttd
             $surat = Surat::findOrFail($id);
             $surat->status_id = 4;
-            $surat->user_id = auth()->user()->id;
             $surat->tipe_surat = $request->tipe_surat;
             $surat->no_surat = $request->no_surat;
             $surat->perihal = $request->perihal;
@@ -228,8 +252,30 @@ class AdminController extends Controller
             $surat->alamat_pengirim = $request->alamat_pengirim;
             $surat->alamat_tujuan = $request->alamat_tujuan;
             $saved = $surat->save();
+
      
             if($saved){
+                // EMAIL
+                // CEK NOTIFIED AND LEVEL
+                $user = Surat::findOrFail($id);
+
+                if(($user->notified == false || $user->notified == null) && ($user->user->type_id == 2 || $user->user->type_id == 3)) {
+                    // EMAIL NOTIFICATION
+                    $data = [
+                        'title' => 'Notification',
+                        'sub_title' => 'Admin Telah Melengkapi Surat',
+                        // 'status' =>  'Status : '.$user->status->status, 
+                        'status' =>  'Status : '.$user->surat->surat, 
+                        'info' =>  'Silahkan Kunjungi Website Untuk Informasi Lebih Lanjut', 
+                        'url' => route('auth.login'),
+                    ];
+            
+                    Mail::to($user->user->email)->send(new EmailNotification($data));
+                }
+
+                $user->notified = true;
+                $user->save();
+
                 return redirect()->back()->withToastSuccess('Surat Berhasil Diedit');
             }else{
                 return back()->with('toast_error', 'Error');
