@@ -33,6 +33,9 @@ Route::middleware('auth','level:3')->group(function ()
     Route::prefix('/')->name('pegawai.')->group(function()
     {
         Route::view('/pegawai','pegawai.index')->name('index');
+        Route::view('/change-password','pegawai.change-password')->name('change-password');
+        Route::post('/change-password/store',[AuthController::class,'change_password_store'])->name('change-password.store');
+
     });
 });
 
@@ -42,6 +45,8 @@ Route::middleware('auth','level:1,2')->group(function ()
 {
     Route::prefix('/user')->name('user.')->group(function()
     {
+        Route::view('/change-password','auth.change-password')->name('change-password');
+        Route::post('/change-password',[AuthController::class,'change_password_store'])->name('change-password.store');
         Route::get('/dashboard',[UserController::class,('index')])->name('index');
 
         #### SURAT MASUK

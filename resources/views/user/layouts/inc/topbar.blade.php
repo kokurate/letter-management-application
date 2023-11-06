@@ -40,7 +40,11 @@
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     Activity Log
                 </a> --}}
-                {{-- <div class="dropdown-divider"></div> --}}
+                <a class="dropdown-item" href="{{ route('user.change-password') }}">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Ganti Password
+                </a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
@@ -56,28 +60,28 @@
 
    <!-- Logout Modal-->
    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-   aria-hidden="true">
-   <div class="modal-dialog" role="document">
-       <div class="modal-content">
-           <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar?</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">×</span>
-               </button>
-           </div>
-           <div class="modal-body">Pilih "Keluar" di bawah ini jika Anda siap mengakhiri sesi Anda saat ini.</div>
-           <div class="modal-footer">
-               <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-        
-                <a href="{{ route('auth.logout') }}" 
-                    class="btn btn-primary" 
-                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+    aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Pilih "Keluar" di bawah ini jika Anda siap mengakhiri sesi Anda saat ini.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                
+                        <a href="{{ route('auth.logout') }}" 
+                            class="btn btn-primary" 
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 
-                    Keluar
+                            Keluar
 
-                </a>
-                <form action="{{ route('auth.logout') }}" id="logout-form" method="post">@csrf</form>
-           </div>
-       </div>
-   </div>
-</div>
+                        </a>
+                        <form action="{{ route('auth.logout') }}" id="logout-form" method="post">@csrf</form>
+                </div>
+            </div>
+        </div>
+    </div>

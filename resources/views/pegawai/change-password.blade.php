@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Custom fonts for this template-->
+    <link href="/templates/back/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/templates/back/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    @livewireStyles
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-6 col-lg-6 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+
+                           
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <img class="mb-3" src="{{ asset('logo.png') }}" alt="LOGO" style="width:25%">
+                                        <h1 class="h3 text-gray-900 mb-4">HALAMAN Ganti Password</h1>
+                                    </div>
+                                    
+                                     @if(Session::get('success'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success') }}
+                                        </div>
+                                    @endif
+                                    <form action="{{ route('pegawai.change-password.store') }}" method="POST" >
+                                        @csrf
+                                        
+                                        <div class="mb-1">
+                                            <label for="p1" class="form-label">Password Baru</label>
+                                            <input type="password" class="form-control" id="p1" name="p1">
+                                        </div>
+                                        @error('p1')
+                                        <p style="color:red;">
+                                            <span role="alert text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        </p>
+                                        @enderror
+                                        <div class="mb-1">
+                                            <label for="p2" class="form-label">Konfirmasi Password</label>
+                                            <input type="password" class="form-control" id="p2" name="p2">
+                                        </div>
+                                        @error('p2')
+                                        <p style="color:red;">
+                                            <span role="alert text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        </p>
+                                        @enderror
+
+                                        <div class="d-flex justify-content-between">
+
+                                            <a class="btn btn-danger my-5" href="{{ route('pegawai.index') }}">Kembali</a>
+    
+                                            <button type="submit" class=" my-5 btn btn-primary ">Submit</button>
+                                        </div>
+                                    </form>
+                                    {{-- <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/templates/back/vendor/jquery/jquery.min.js"></script>
+    <script src="/templates/back/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/templates/back/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/templates/back/js/sb-admin-2.min.js"></script>
+    @livewireScripts
+
+</body>
+
+</html>

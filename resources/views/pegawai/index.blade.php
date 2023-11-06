@@ -37,6 +37,7 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#upload">Upload</a></li>
                         <li class="nav-item"><a class="nav-link" href="#history">Daftar Surat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pegawai.change-password') }}">Ganti Password</a></li>
                         <li class="nav-item">
                             <a href="{{ route('auth.logout') }}" 
                                 class="nav-link" 
