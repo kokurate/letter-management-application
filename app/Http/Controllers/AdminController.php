@@ -265,7 +265,7 @@ class AdminController extends Controller
                         'title' => 'Notification',
                         'sub_title' => 'Admin Telah Melengkapi Surat',
                         // 'status' =>  'Status : '.$user->status->status, 
-                        'status' =>  'Status : '.$user->surat->surat, 
+                        'status' =>  'Status : '.$user->status->status, 
                         'info' =>  'Silahkan Kunjungi Website Untuk Informasi Lebih Lanjut', 
                         'url' => route('auth.login'),
                     ];
