@@ -159,10 +159,11 @@ class UserController extends Controller
 
     }
 
-    public function kadis_upload_surat_detail(Surat $surat)
+    public function kadis_upload_surat_detail($id)
     {
+        $surat = Surat::with('user')->find($id);
         return view('user.upload-surat-detail',[
-            'detail' => $surat->with('user')->first(),
+            'detail' => $surat,
         ]);
     }
 

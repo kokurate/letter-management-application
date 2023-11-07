@@ -34,7 +34,7 @@
                         <label for="tanggal" class="form-label">Tanggal</label>
                         <input type="date" id="tanggal" 
                             class="form-control  @error('tanggal')is-invalid @enderror" wire:model="tanggal">
-                        @error('perihal')
+                        @error('tanggal')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
 

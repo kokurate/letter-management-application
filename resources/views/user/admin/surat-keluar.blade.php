@@ -28,7 +28,7 @@
                                 <th>Perihal</th>
                                 <th>No Surat</th>
                                 <th>Tanggal</th>
-                                <th>Alamat Pengirim</th>
+                                <th>Alamat Tujuan</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                     <td>{{ Carbon\Carbon::parse($data->tanggal)
                                             ->translatedFormat('d M Y') }}
                                     </td>
-                                    <td>{{ $data->alamat_pengirim ?? '-----'}}</td>
+                                    <td>{{ $data->alamat_tujuan ?? '-----'}}</td>
                                     <td class="text-center">  
                                         <form action="{{ route('admin.surat-keluar-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
                                         <a href="#" class="my-1 py-1 px-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"

@@ -107,6 +107,8 @@
                             <thead>
                                 <tr>
                                     <th>No Surat</th>
+                                    <th>Alamat Pengirim</th>
+                                    <th>Alamat Tujuan</th>
                                     <th>Perihal</th>
                                     <th>Tanggal</th>
                                     <th>File</th>
@@ -124,6 +126,8 @@
                                                         $data)
                                     <tr>
                                         <td>{{ $data->no_surat }}</td>
+                                        <td>{{ $data->alamat_pengirim }}</td>
+                                        <td>{{ $data->alamat_tujuan }}</td>
                                         <td>{{ $data->perihal }}</td>
                                         <td>{{ Carbon\Carbon::parse($data->tanggal)
                                                 ->translatedFormat('d M Y') }}
@@ -192,6 +196,12 @@
      <script>
          new DataTable('#index', {
              scrollX: true,
+             columnDefs: [
+        {
+            target: [0,1,2],
+            visible: false
+        }
+    ]
          });
      </script>
 

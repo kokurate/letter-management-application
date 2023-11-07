@@ -31,7 +31,7 @@
                                 <td>{{ $data->user->name }}</td>
                                 <td>{{ $data->perihal }}</td>
                                 <td>{{ Carbon\Carbon::parse($data->tanggal)->translatedFormat('d M Y') }}</td>
-                                <td><a href="{{ asset($data->file) }}">File</a></td>
+                                <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                 <td class="text-center">  
                                     <form action="{{ route('user.upload-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
                                     <a href="#" class="my-1 btn btn-danger btn-sm delete" id="{{ $data->id }}"
@@ -39,8 +39,8 @@
                                         onclick="deleteItem({{ $data->id }})">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    <a href="{{ route('user.upload-surat-detail', $data->id) }}" class="my-1 btn btn-primary btn-sm delete">
-                                        <i class="fas fa-pencil-alt"></i>
+                                    <a href="{{ route('user.upload-surat-detail', $data->id) }}" class="my-1 btn btn-secondary btn-sm delete">
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>   
