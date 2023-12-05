@@ -26,7 +26,7 @@ class PegawaiUploadForm extends Component
         $this->validate([
             'perihal' => 'required|max:255',
             'tanggal' => 'required|date',
-            'file' => 'required|file|max:2024|mimes:pdf',
+            'file' => 'file|max:2024|mimes:pdf|required',
         ],[
             'perihal.required' => ':attribute tidak boleh kosong',
             'tanggal.required' => ':attribute tidak boleh kosong',
