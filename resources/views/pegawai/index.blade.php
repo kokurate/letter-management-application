@@ -120,6 +120,7 @@
                                                         ->where('alamat_pengirim', '!=', null)
                                                         ->where('alamat_tujuan', '!=', null)
                                                         ->where('no_surat', '!=', null)
+                                                        ->where('user_id', auth()->user()->id)
                                                         ->orderBy('created_at', 'asc')
                                                         ->get() 
                                                         as 
