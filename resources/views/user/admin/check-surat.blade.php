@@ -41,8 +41,9 @@
                                 <tr>
                                     <td>{{ $data->user->name }}</td>
                                     <td>{{ $data->perihal }}</td>
-                                    <td>{{ Carbon\Carbon::parse($data->tanggal)
-                                            ->translatedFormat('d M Y') }}
+                                    {{-- <td>{{ Carbon\Carbon::parse($data->tanggal)
+                                            ->translatedFormat('d M Y') }} --}}
+                                    <td>{{ $data->tanggal }}
                                     </td>
                                     <td class="text-center">  
                                         {{-- <form action="{{ route('admin.check-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>

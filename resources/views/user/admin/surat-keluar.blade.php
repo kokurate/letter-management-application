@@ -38,9 +38,9 @@
                                     <td>{{ $data->user->name }}</td>
                                     <td>{{ $data->perihal }}</td>
                                     <td>{{ $data->no_surat ?? '-----' }}</td>
-                                    <td>{{ Carbon\Carbon::parse($data->tanggal)
-                                            ->translatedFormat('d M Y') }}
-                                    </td>
+                                    {{-- <td>{{ Carbon\Carbon::parse($data->tanggal)
+                                            ->translatedFormat('d M Y') }} --}}
+                                    <td>{{$data->tanggal}}</td>
                                     <td>{{ $data->alamat_tujuan ?? '-----'}}</td>
                                     <td class="text-center">  
                                         <form action="{{ route('admin.surat-keluar-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>

@@ -130,9 +130,9 @@
                                         <td>{{ $data->alamat_pengirim }}</td>
                                         <td>{{ $data->alamat_tujuan }}</td>
                                         <td>{{ $data->perihal }}</td>
-                                        <td>{{ Carbon\Carbon::parse($data->tanggal)
-                                                ->translatedFormat('d M Y') }}
-                                        </td>
+                                        {{-- <td>{{ Carbon\Carbon::parse($data->tanggal)
+                                                ->translatedFormat('d M Y') }} --}}
+                                        <td>{{ $data->tanggal}}</td>
                                         <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                         <td class="text-center">  
                                             <a href="#" class="my-1 btn btn-primary btn-sm" 

@@ -30,7 +30,8 @@
                             <tr>
                                 <td>{{ $data->user->name }}</td>
                                 <td>{{ $data->perihal }}</td>
-                                <td>{{ Carbon\Carbon::parse($data->tanggal)->translatedFormat('d M Y') }}</td>
+                                {{-- <td>{{ Carbon\Carbon::parse($data->tanggal)->translatedFormat('d M Y') }}</td> --}}
+                                <td>{{ $data->tanggal }}</td>
                                 <td><a href="{{ asset($data->file) }}" target="__blank">File</a></td>
                                 <td class="text-center">  
                                     <form action="{{ route('user.upload-surat-delete', $data->id) }}" id="delete-form-{{ $data->id }}" method="post">@csrf @method('delete')</form>
