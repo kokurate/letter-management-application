@@ -49,6 +49,9 @@
                     </ul>
                 </div>
             </div>
+            <p class="modal-footer text-mute">
+                diupload pada {{ Carbon\Carbon::parse($detail->created_at)->isoFormat('D MMMM YYYY') }}, jam  {{ Carbon\Carbon::parse($detail->created_at)->format('H:m') }}
+            </p>
         </div>
 
         <div class="col-lg-6 col-sm-12 my-2">

@@ -163,7 +163,9 @@
                                                         <li class="list-group-item"><strong>ALAMAT TUJUAN</strong> : {{ $data->alamat_tujuan }}</li>
                                                         <li class="list-group-item"><strong>TANGGAL</strong> : {{ $data->tanggal }}</li>
                                                     </ul>
-                                                    
+                                                    <p class="modal-footer text-mute">
+                                                        diupload pada {{ Carbon\Carbon::parse($data->created_at)->isoFormat('D MMMM YYYY') }}, jam  {{ Carbon\Carbon::parse($data->created_at)->format('H:m') }}
+                                                    </p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
